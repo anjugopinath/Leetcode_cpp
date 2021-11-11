@@ -1,0 +1,19 @@
+#This solution, though accepted, does not meet the criteria set by the question.
+/*
+11510 / 11510 test cases passed.
+Status: Accepted
+Runtime: 12 ms
+Memory Usage: 5.9 MB
+*/
+class Solution {
+public:
+    bool isPalindrome(int x) 
+    {
+        string x_str = to_string(x);
+        reverse(x_str.begin(),x_str.end());
+        if(x==stol(x_str))
+           return true;
+        else
+           return false;
+    }
+};
