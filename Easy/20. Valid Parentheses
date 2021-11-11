@@ -1,0 +1,38 @@
+class Solution {
+public:
+    stack<char> char_stack;
+    bool isValid(string s) 
+    {
+        for(char& c : s) 
+        {
+           if((c=='(')||(c=='[')||(c=='{'))
+           {
+               char_stack.push(c);
+           }
+           if((c==')')||(c==']')||(c=='}'))
+           {
+               if(char_stack.empty())
+                   return false;
+               char t = char_stack.top();
+               if((c==')') and (t!='('))
+                   return false;
+               if((c==']') and (t!='['))
+                   return false;
+                if((c=='}') and (t!='{'))
+                   return false;  
+               
+               if((c==')') and (t=='('))
+                   char_stack.pop();
+               if((c==']') and (t=='['))
+                   char_stack.pop();
+               if((c=='}') and (t=='{'))
+                   char_stack.pop();
+           }
+        }
+        if(char_stack.empty())
+            return true;
+        else
+            return false;
+        
+    }
+};
