@@ -1,3 +1,10 @@
+/*
+Success
+Details 
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Valid Parentheses.
+Memory Usage: 6.2 MB, less than 79.26% of C++ online submissions for Valid Parentheses.
+*/
+
 class Solution {
 public:
     stack<char> char_stack;
