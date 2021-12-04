@@ -1,0 +1,28 @@
+/*
+Success
+Details 
+Runtime: 0 ms, faster than 100.00% of C++ online submissions for Longest Common Prefix.
+Memory Usage: 9.1 MB, less than 77.13% of C++ online submissions for Longest Common Prefix.
+*/
+//Reference : https://www.youtube.com/watch?v=1YQmI7F9dJ0
+
+class Solution {
+public:
+    string longestCommonPrefix(vector<string>& strs) 
+    {
+        string longestCommonPrefix="";
+        if(strs.size()==0)
+            return longestCommonPrefix;
+        int size = strs[0].length();
+        for(char c=0;c<strs[0].size();c++)
+        {
+            for(int i=1;i<strs.size();i++)
+            {
+               if((strs[i][c]!=strs[0][c])||(c>=size))
+                    return longestCommonPrefix;
+            }
+             longestCommonPrefix+=strs[0][c];
+        }
+        return longestCommonPrefix;
+    }
+};
