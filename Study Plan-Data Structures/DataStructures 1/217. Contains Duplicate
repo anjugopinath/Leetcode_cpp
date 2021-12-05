@@ -1,0 +1,24 @@
+/*
+Success
+Details 
+Runtime: 36 ms, faster than 53.39% of C++ online submissions for Contains Duplicate.
+Memory Usage: 20.3 MB, less than 47.58% of C++ online submissions for Contains Duplicate.
+*/
+//Reference - https://www.youtube.com/watch?v=qg0CY00qJqI
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums)
+    {
+        unordered_set<int> check;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(check.find(nums[i])==check.end())
+                check.insert(nums[i]);
+            else
+                return true;
+        }
+        return false;
+        
+    }
+};
