@@ -5,6 +5,13 @@ Runtime: 36 ms, faster than 53.39% of C++ online submissions for Contains Duplic
 Memory Usage: 20.3 MB, less than 47.58% of C++ online submissions for Contains Duplicate.
 */
 //Reference - https://www.youtube.com/watch?v=qg0CY00qJqI
+/*
+Complexity Analysis
+
+Time complexity : O(n)O(n). We do search() and insert() for nn times and each operation takes constant time.
+
+Space complexity : O(n)O(n). The space used by a hash table is linear with the number of elements in it.
+*/
 
 class Solution {
 public:
