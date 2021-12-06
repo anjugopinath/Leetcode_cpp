@@ -1,0 +1,29 @@
+//https://leetcode.com/problems/valid-parentheses/
+/*Runtime: 0 ms, faster than 100.00% of C++ online submissions for Valid Parentheses.
+Memory Usage: 8.5 MB, less than 91.47% of C++ online submissions for Valid Parentheses.*/
+
+class Solution {
+public:
+    bool isValid(string s) 
+    {
+        if((s.length())%2==1) return 0;//if length of string is odd, return false.
+        if(s.length()==0) return 1;//if string is null, return true, since length is 0, which is even.
+
+        stack<char> parantheses_check;
+        parantheses_check.push(s.at(0)); // push the first character in the string into the stack
+        for(int i=1;i<s.length();i++)
+        {
+        //if current character in the string is the mirror opposite of the character at the top of the stack , pop the topmost element from the
+        //stack, else , push it into the stack.
+            if(((s.at(i)==')')&&(parantheses_check.top()=='('))||((s.at(i)==']')&&(parantheses_check.top()=='['))||((s.at(i)=='}')&&(parantheses_check.top()=='{')))
+            parantheses_check.pop();
+            else
+                parantheses_check.push(s.at(i));
+        }
+        //return true if the stack is empty, else return false.
+        if(parantheses_check.empty())
+            return 1;
+        else
+            return 0;
+    }
+};
