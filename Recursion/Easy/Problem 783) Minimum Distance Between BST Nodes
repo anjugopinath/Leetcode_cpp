@@ -1,0 +1,44 @@
+//https://leetcode.com/problems/minimum-distance-between-bst-nodes/
+/*Runtime: 8 ms, faster than 8.13% of C++ online submissions for Minimum Distance Between BST Nodes.
+Memory Usage: 15 MB, less than 9.09% of C++ online submissions for Minimum Distance Between BST Nodes.*/
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    //https://www.geeksforgeeks.org/pair-with-minimum-absolute-difference-bst/
+    int minDiffInBST(TreeNode* root) 
+    {
+        vector<int> result;
+        //inorder traversal of a BST gives the elements in the increasing order. I have retained the result inside a vector.
+        result = inorder(root,result);
+        int minDiff=INT_MAX;
+        
+        //I iterate through the vector and find the difference in value between adject numbers.'mindiff' is updated accordingly.
+        for(int i=1;i<result.size();i++)
+        {
+            if((result[i]-result[i-1])<minDiff)
+                minDiff=(result[i]-result[i-1]);
+        }
+        return minDiff;
+    }
+     vector<int> inorder(TreeNode* root, vector<int> &result)
+    {
+        if(root->left!=NULL)
+            inorder(root->left,result);
+        
+            result.push_back(root->val);
+        
+        if(root->right!=NULL)
+            inorder(root->right,result);
+        
+        return result;
+    }
+};
+

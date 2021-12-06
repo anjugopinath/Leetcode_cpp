@@ -1,0 +1,56 @@
+//https://leetcode.com/problems/n-th-tribonacci-number/
+/*   NOTE:
+    Using Recursion(code given below dynamic programming - scroll down) results in exponential time and submitting the
+    solution will give 'memory exceeded' error.
+    Hence, I have used dynamic programming.
+    There are two better solutions to this problem : https://www.geeksforgeeks.org/tribonacci-numbers/
+*/
+
+/*Runtime: 0 ms, faster than 100.00% of C++ online submissions for N-th Tribonacci Number.
+Memory Usage: 8.2 MB, less than 100.00% of C++ online submissions for N-th Tribonacci Number.*/
+/*--------------------------------------------------------------------------------
+                      USING DYNAMIC PROGRAMMING
+--------------------------------------------------------------------------------*/
+
+class Solution {
+public:
+    int tribonacci(int n) 
+    {
+        int T[n+1];
+        if(n==0) return 0;
+        if((n==1)||(n==2)) return 1;
+        T[0]=0;T[1]=1;T[2]=1;
+        
+        for(int i=3;i<=n;i++)
+            T[i]=T[i-1]+T[i-2]+T[i-3];
+        
+        return T[n];
+    }
+};
+
+
+/*
+
+--------------------------------------------------------------------------------
+                      USING RECURSION
+--------------------------------------------------------------------------------
+                      
+class Solution {
+public:
+    int tribonacci(int n) 
+    {
+        int T[n+1];
+        
+        int result=recursion(n,T);
+        
+        return result;
+    }
+    int recursion(int n,int T[])
+    {
+        if(n==0) return 0;
+        if((n==1)||(n==2)) return 1;
+        return recursion(n-3,T)+recursion(n-2,T)+recursion(n-1,T);
+
+    }
+};
+/*
