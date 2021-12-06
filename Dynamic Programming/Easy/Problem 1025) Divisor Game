@@ -1,0 +1,36 @@
+//https://leetcode.com/problems/divisor-game/
+/* Runtime: 0 ms, faster than 100.00% of C++ online submissions for Divisor Game.
+Memory Usage: 8 MB, less than 100.00% of C++ online submissions for Divisor Game.*/
+
+class Solution {
+public:
+    bool divisorGame(int N) {
+        
+        bool alice=true;
+        int flag = 0;
+        while(true)
+        {
+            int x=1;
+            flag=0;
+            while(x<N)
+            {
+                if(N%x==0)
+                {
+                    N=N-x; flag=1;
+                    break;
+                }
+                x++;
+            }
+            if(flag==1) {alice=!alice;}
+            else
+            {
+                if(!alice==true)
+                    return true;
+                else
+                    return false;
+            }
+                
+        }
+        
+    }
+};

@@ -1,0 +1,26 @@
+/* https://leetcode.com/problems/maximum-subarray/
+RESULT
+Runtime: 4 ms, faster than 98.59% of C++ online submissions for Maximum Subarray.
+Memory Usage: 9.5 MB, less than 8.82% of C++ online submissions for Maximum Subarray.
+*/
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) 
+    {
+        int n=nums.size();
+        vector<int> f(n,INT_MIN); //initialize a vector with size same as input array
+        
+        f[0] = nums[0];
+        int maxSum = nums[0];//maxSum will contain the result to be returned. Initialize it with the first element from the array.
+                             //This also handles the case when there is only one element in the array.
+        
+        //Iterate through the array
+        for(int i=1;i<n;i++)
+        {
+            f[i] = max(f[i-1] + nums[i],nums[i]); //If the (current sum + current array element) is lesser than the current array element ,
+                                             //update f[i] with the array element.
+            maxSum=max(f[i],maxSum); //update maxSum with the maximum value after iterating through each element
+        }
+        return maxSum;
+    }
+};

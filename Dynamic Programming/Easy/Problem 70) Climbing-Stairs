@@ -1,0 +1,24 @@
+// https://leetcode.com/problems/climbing-stairs/
+class Solution {
+public:
+    int climbStairs(int n) {
+       //Boundary Case : if n=1 or n=2 
+        if(n<3)
+            return n;
+        
+        //You can solve the problem if you work out the solution till n=6;for all the cases
+        //beginning from n=3, you just add one step each to the solution of (n-1);
+        //and 2 steps to each of the solutions to (n-2)
+        //Say, you are calculating for n=6, suppose you reached the 5th step and you have the solution with you, then , you just add 1 step to each of the combinations you have,
+        //suppose you are on the 4th step, you just 2 steps to each of the combinations you have.
+        int result[n+1]={};
+        result[1]=1;
+        result[2]=2;
+       
+        for(int i=3;i<=n;i++)
+        {
+            result[i]=result[i-1]+result[i-2];
+        }
+        return result[n];
+    }
+};

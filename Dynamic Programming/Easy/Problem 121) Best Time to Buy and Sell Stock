@@ -1,0 +1,31 @@
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+/*Runtime: 4 ms, faster than 98.21% of C++ online submissions for Best Time to Buy and Sell Stock.
+Memory Usage: 9.4 MB, less than 98.17% of C++ online submissions for Best Time to Buy and Sell Stock.*/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices)
+    {
+        if(prices.empty()) // one of the test cases has null vector as input. This condition handles it.
+            return 0;
+        
+        int smallest = prices[0]; //The variable 'smallest' stores the smallest value encountered in the input vector when it is 
+                                  //traversed from beginning till end. So, we can simply subract 'smallest' and the vector element
+                                  // being traversed to see if profit is maximum.(By comparing with the global variable 'profit' which
+                                  // contains the maximum profit obtained so far.)
+        int profit=0;
+               
+        //Iterate through the vector        
+        for(int i=1;i<prices.size();i++)
+        {
+            int diff=0;
+           if(prices[i]>smallest)    
+               diff = prices[i]-smallest;// Calculate the value of the local variable 'diff' to be used later then in the code.
+           else
+               smallest = prices[i]; //update the variable 'smallest' if a smaller value is encountered.
+          if(diff > profit)
+              profit=diff; // update the 'profit' global variable if a larger profit is encountered.
+        }
+        return profit;
+    }
+};
