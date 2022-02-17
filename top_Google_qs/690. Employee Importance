@@ -1,0 +1,23 @@
+/*
+Success
+Details 
+Runtime: 32 ms, faster than 76.36% of C++ online submissions for Employee Importance.
+Memory Usage: 13.9 MB, less than 79.06% of C++ online submissions for Employee Importance.
+*/
+
+//https://leetcode.com/problems/employee-importance/discuss/112605/C%2B%2B-12-lines-BFS-and-7-lines-DFS
+class Solution {
+public:
+    int getImportance(vector<Employee*> employees, int id) {
+        unordered_map<int, Employee*>m;
+        for(auto x: employees) m[x->id] = x;
+        int sum = 0;
+        DFS(m, id, sum);
+        return sum;
+    }
+    
+    void DFS(unordered_map<int, Employee*>& m, int id, int& sum){
+        sum += m[id]->importance;
+        for(auto x: m[id]->subordinates) DFS(m, x, sum);
+    }
+};
