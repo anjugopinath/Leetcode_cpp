@@ -1,1 +1,1 @@
-List of questions obtained from Facebook
+List of questions obtained from InterviewBit
