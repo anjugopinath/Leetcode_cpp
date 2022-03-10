@@ -1,0 +1,28 @@
+
+//https://leetcode.com/problems/evaluate-reverse-polish-notation/discuss/1658649/Naive-to-Efficient-2-Approaches-O(1)-Space-Simple-and-Easy-C%2B%2B
+
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        // will be using the tokens vector as a stack
+        
+        int top = 0;
+        for(auto a : tokens){
+            if(a != "+" && a != "-" && a != "*" && a != "/"){
+                tokens[top++] = a;
+            }
+            else{
+                int num1 = stoi(tokens[--top]);
+                int num2 = stoi(tokens[--top]);
+                
+                if(a == "+") num2 += num1;
+                else if(a == "-") num2 -= num1;
+                else if(a == "*") num2 *= num1;
+                else num2 /= num1;
+                
+                tokens[top++] = to_string(num2);
+            }
+        }
+        return stoi(tokens[0]);
+    }
+};
