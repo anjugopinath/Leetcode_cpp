@@ -1,5 +1,5 @@
 //https://leetcode.com/problems/trapping-rain-water/
-
+//https://www.youtube.com/watch?v=UZG3-vZlFM4
 class Solution {
 public:
     int trap(vector<int>& height)
